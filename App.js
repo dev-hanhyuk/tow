@@ -1,14 +1,40 @@
-// npm install --save react-redux redux redux-thunk axios
 import React from 'react';
 import { Provider } from 'react-redux';
 import { StyleSheet, Text, View } from 'react-native';
+import { TabNavigator, StackNavigator } from 'react-navigation';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from './store';
+
+
+import Winebars from './components/Winebars';
+
+
+const WinebarsNavigator = StackNavigator({
+  Winebars: { screen: Winebars },
+})
+
+
+const AppTabNavigator = TabNavigator({
+  WinebarsNavigator: {
+    screen: WinebarsNavigator,
+    navigationOptions: {
+      tabBarLabel: '와인바',
+      tabBarIcon: ({ tintColor, focused }) => (
+        <Ionicons
+          name={focused ? 'ios-navigate' : 'ios-navigate-outline'}
+          size={26}
+          style={{ color: tintColor}} />
+      )
+    }
+  },
+})
+
 
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <View><Text>REACT REDUX TEST</Text></View>
+        <AppTabNavigator />
       </Provider>
     );
   }
