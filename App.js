@@ -7,10 +7,11 @@ import store from './store';
 
 
 import Winebars from './components/Winebars';
-
+import WinebarDetail from './components/WinebarDetail';
 
 const WinebarsNavigator = StackNavigator({
   Winebars: { screen: Winebars },
+  WinebarDetail: { screen: WinebarDetail },
 })
 
 
