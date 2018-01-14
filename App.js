@@ -8,14 +8,29 @@ import store from './store';
 
 import Winebars from './components/Winebars';
 import WinebarDetail from './components/WinebarDetail';
+import WineDetail from './components/WineDetail';
+import WineNavigation from './components/WineNavigation';
 
 const WinebarsNavigator = StackNavigator({
   Winebars: { screen: Winebars },
   WinebarDetail: { screen: WinebarDetail },
+  WineDetail: { screen: WineDetail }
 })
 
 
 const AppTabNavigator = TabNavigator({
+  TastingNavigator: {
+    screen: WineNavigation,
+    navigationOptions: {
+      tabBarLabel: '테이스팅',
+      tabBarIcon: ({ tintColor, focused }) => (
+        <Ionicons
+          name={focused ? 'ios-wine' : 'ios-wine-outline'}
+          size={26}
+          style={{ color: tintColor}} />
+      )
+    }
+  },
   WinebarsNavigator: {
     screen: WinebarsNavigator,
     navigationOptions: {

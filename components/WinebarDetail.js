@@ -63,12 +63,12 @@ class WinebarDetail extends Component {
 
 
   _renderTastingWines() {
-    const { wineSelection } = this.props;
+    const { wineSelection, navigation } = this.props;
     return wineSelection.map((wine) => 
-        <TouchableHighlight key={wine.id} onPress={() => navigation.navigate('WineDetail')}>
+        <TouchableHighlight key={wine.id} onPress={() => navigation.navigate('WineDetail', {wine_id: wine.id})}>
             <View style={styles.wineSelectionContainer}>
                 <Image style={styles.wineSelectionImage} source={{uri: wine.imageUrl }} />
-                <Text>{wine.wine_name}</Text>
+                <Text style={{textAlign: 'center'}}>{wine.wine_name}</Text>
             </View>
         </TouchableHighlight>
     )
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
       wineSelectionContainer: {
         flexDirection: 'column',
         alignItems: 'center', 
-        justifyContent: 'center'
+        justifyContent: 'center',
       },
       wineSelectionImage: {
         width: 150, 
